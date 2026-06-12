@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "outDir": "temp",
+    "sourceMap": false,
+    "newLine": "LF",
+    "useDefineForClassFields": false,
+    "target": "es2016",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowJs": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "isolatedDeclarations": false,
+    "composite": true,
+    "verbatimModuleSyntax": true,
+    "jsx": "preserve",
+    "lib": ["es2016", "dom"],
+    "types": ["vitest/globals", "puppeteer", "node"],
+    "rootDir": ".",
+    "paths": {
+      "@mytng/*": ["./packages/*/src"],
+      "mytng": ["./packages/myt/src"],
+      "*": ["./*"]
+    }
+  },
+  "include": [
+    "packages/global.d.ts",
+    "packages/*/src",
+    "packages/*/types",
+    "packages/*/__tests__",
+    "scripts/*",
+    "tsdown.config.ts"
+  ],
+  "exclude": ["dist"]
+}
