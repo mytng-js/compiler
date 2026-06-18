@@ -1,0 +1,40 @@
+[package]
+name = "compiler"
+version = "0.0.0"
+authors = ["Mytng contributors"]
+edition = "2024"
+license = "MIT"
+rust-version = "1.96.0"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["napi"]
+napi = []
+
+[workspace]
+resolver = "3"
+# members = ["crates/*"]
+
+[workspace.dependencies]
+napi = { version = "3.9.2", features = ["napi9"] }
+napi-derive = "3.5.6"
+
+[dependencies]
+napi = { workspace = true }
+napi-derive = { workspace = true }
+
+[dev-dependencies]
+insta = "1.48.0"
+criterion = "0.8.2"
+
+[build-dependencies]
+napi-build = "2"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = "symbols"

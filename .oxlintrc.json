@@ -68,9 +68,9 @@
       }
     },
 
-    // __tests__
+    // tests
     {
-      "files": ["**/__tests__/**"],
+      "files": ["**/tests/**"],
       "rules": {
         "no-console": "off",
         "no-restricted-globals": "off",

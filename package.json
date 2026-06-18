@@ -1,10 +1,10 @@
 {
-  "name": "compiler-monorepo",
-  "description": "",
+  "name": "mytng-compiler-monorepo",
+  "description": "The Mytng Compiler",
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@11.5.2",
+  "packageManager": "pnpm@11.7.0",
   "engines": {
     "node": ">=24.16.0"
   },
@@ -25,9 +25,13 @@
     "lint": "oxlint",
     "format": "oxfmt",
     "format-check": "oxfmt --check",
+    "format:toml": "taplo format",
+    "format:rs": "cargo fmt",
+    "format:all": "run-p format format:rs format:toml",
     "clean": "rimraf --glob packages/*/dist temp",
     "check": "pnpm tsc --incremental --noEmit",
     "build": "pnpm check && pnpm pack-build",
+    "build:compiler": "pnpm --filter @mytng/compiler run build",
     "pack-build": "tsdown --tsconfig tsconfig.build.json && rimraf --glob 'packages/*/dist/*-browser.d.ts'",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks"
@@ -40,9 +44,12 @@
     "*.{js,mjs,json}": [
       "oxfmt --no-error-on-unmatched-pattern"
     ],
-    "*.ts?(x)": [
+    "*.{ts,tsx}": [
       "oxlint --fix",
       "oxfmt --no-error-on-unmatched-pattern"
+    ],
+    "*.toml": [
+      "taplo format"
     ]
   },
   "devDependencies": {
@@ -50,24 +57,25 @@
     "@changesets/cli": "catalog:",
     "@tailwindcss/postcss": "catalog:",
     "@tailwindcss/vite": "catalog:",
-    "@types/node": "^25.9.2",
-    "@vitest/browser-playwright": "^4.1.8",
-    "@vitest/coverage-v8": "^4.1.8",
-    "@vitest/ui": "^4.1.8",
+    "@taplo/cli": "^0.7.0",
+    "@types/node": "^25.9.3",
+    "@vitest/browser-playwright": "^4.1.9",
+    "@vitest/coverage-v8": "^4.1.9",
+    "@vitest/ui": "^4.1.9",
     "chalk": "^5.6.2",
     "lint-staged": "^17.0.7",
-    "npm-run-all2": "^9.0.1",
-    "oxfmt": "^0.54.0",
-    "oxlint": "^1.69.0",
+    "npm-run-all2": "^9.0.2",
+    "oxfmt": "^0.55.0",
+    "oxlint": "^1.70.0",
     "postcss": "catalog:",
     "puppeteer": "^25.1.0",
     "rimraf": "^6.1.3",
     "simple-git-hooks": "^2.13.1",
     "tailwindcss": "catalog:",
     "tinyglobby": "^0.2.17",
-    "tsdown": "^0.22.2",
+    "tsdown": "^0.22.3",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.9"
   }
 }

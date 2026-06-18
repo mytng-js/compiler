@@ -16,7 +16,7 @@ export default defineConfig(
     // packages/<pkg>/*/index.ts
     globSync('packages/*/*/index.ts', {
       // Ignore some directories, including the Rust language.
-      ignore: ['**/{__tests__,dist,node_modules,types,target,debug}/**', '**/_*/**', '**/.*/**'],
+      ignore: ['**/{tests,dist,node_modules,types,target,debug}/**', '**/_*/**', '**/.*/**'],
     }).forEach(entryFile => {
       // packages/myt/client/index.ts => dist/client.js
       // packages/myt/server/index.ts => dist/server.js

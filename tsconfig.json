@@ -33,7 +33,7 @@
     "packages/global.d.ts",
     "packages/*/src",
     "packages/*/types",
-    "packages/*/__tests__",
+    "packages/*/tests",
     "scripts/*",
     "tsdown.config.ts"
   ],

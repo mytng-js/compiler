@@ -32,7 +32,7 @@ export default defineConfig({
           name: 'unit-gc',
           pool: 'forks',
           execArgv: ['--expose-gc'],
-          include: ['packages/*/__tests__/*.gc.spec.ts'],
+          include: ['packages/*/tests/*.gc.spec.ts'],
         },
       },
       {
@@ -41,8 +41,8 @@ export default defineConfig({
           name: 'unit',
           exclude: [
             ...configDefaults.exclude,
-            'packages/*/__tests__/*.{gc,dom}.spec.ts',
-            'packages/*/__tests__/bench/**',
+            'packages/*/tests/*.{gc,dom}.spec.ts',
+            'packages/*/tests/bench/**',
             '**/e2e/**',
           ],
         },
@@ -52,7 +52,7 @@ export default defineConfig({
         test: {
           name: 'unit-jsdom',
           environment: 'jsdom',
-          include: ['packages/*/__tests__/*.dom.spec.ts'],
+          include: ['packages/*/tests/*.dom.spec.ts'],
           exclude: [...configDefaults.exclude, '**/e2e/**'],
         },
       },
@@ -62,7 +62,7 @@ export default defineConfig({
           name: 'e2e',
           environment: 'jsdom',
           isolate: true,
-          include: ['packages/*/__tests__/e2e/*.spec.ts'],
+          include: ['packages/*/tests/e2e/*.spec.ts'],
         },
       },
       {
@@ -82,7 +82,7 @@ export default defineConfig({
             instances: [{ browser: 'chromium' }],
           },
           benchmark: {
-            include: ['packages/*/__tests__/bench/*.bench.ts'],
+            include: ['packages/*/tests/bench/*.bench.ts'],
           },
         },
       },
